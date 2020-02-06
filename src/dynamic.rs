@@ -106,7 +106,7 @@ impl Dynamic {
         &self,
         mut io: W,
         eh: &Header,
-    ) -> Result<(usize), Error>
+    ) -> Result<usize, Error>
     where
         W: Write,
     {

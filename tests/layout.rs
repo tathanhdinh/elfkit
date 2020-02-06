@@ -143,7 +143,7 @@ fn layout_just_text() {
     let phdr_segments :Vec<&segment::SegmentHeader> = elf.segments.iter().filter(|x| x.phtype == types::SegmentType::PHDR).collect();
     assert_eq!(phdr_segments.len(), 1,
         "expecting exactly one phdr segment");
-    let phdr = phdr_segments.get(0).unwrap();;
+    let phdr = phdr_segments.get(0).unwrap();
 
     assert_eq!(phdr.offset, elf.header.phoff,
         "phdr.offset must be identical to elf header phoff");
@@ -155,7 +155,7 @@ fn layout_just_text() {
     assert_eq!(load_segments.len(), 1,
         "expect exactly one load segment");
 
-    let segment = load_segments.get(0).unwrap();;
+    let segment = load_segments.get(0).unwrap();
     assert_eq!(segment.offset,0,
         "first load segment must start at zero");
     assert_eq!(segment.vaddr, 0,
@@ -205,7 +205,7 @@ fn layout_just_bss() {
     let load_segments :Vec<&segment::SegmentHeader> = elf.segments.iter().filter(|x| x.phtype == types::SegmentType::LOAD).collect();
     assert_eq!(load_segments.len(), 1,
         "expect xactly one load segment");
-    let segment = load_segments.get(0).unwrap();;
+    let segment = load_segments.get(0).unwrap();
 
     assert!(segment.vaddr  <= elf.sections[1].header.addr,
         "first load segment must start at or before .bss");
@@ -252,8 +252,8 @@ fn layout_text_and_bss_1() {
     let load_segments :Vec<&segment::SegmentHeader> = elf.segments.iter().filter(|x| x.phtype == types::SegmentType::LOAD).collect();
     assert_eq!(load_segments.len(), 2,
         "expect exactly 2 load segments");
-    let segment0 = load_segments.get(0).unwrap();;
-    let segment1 = load_segments.get(1).unwrap();;
+    let segment0 = load_segments.get(0).unwrap();
+    let segment1 = load_segments.get(1).unwrap();
 
     assert_eq!(segment0.vaddr,0 ,
         "first load segment must start at 0");
@@ -303,9 +303,9 @@ fn layout_text_and_bss_2() {
     let load_segments :Vec<&segment::SegmentHeader> = elf.segments.iter().filter(|x| x.phtype == types::SegmentType::LOAD).collect();
     assert_eq!(load_segments.len(), 3,
         "expect exactly 3 load segments");
-    let segment0 = load_segments.get(0).unwrap();;
-    let segment1 = load_segments.get(1).unwrap();;
-    let segment2 = load_segments.get(2).unwrap();;
+    let segment0 = load_segments.get(0).unwrap();
+    let segment1 = load_segments.get(1).unwrap();
+    let segment2 = load_segments.get(2).unwrap();
 
     assert_eq!(segment0.vaddr, 0,
         "first load segment must start at 0");
@@ -468,7 +468,7 @@ fn layout_many_bss() {
         "expect exactly 5 segments");
 
     let load_segments :Vec<&segment::SegmentHeader> = elf.segments.iter().filter(|x| x.phtype == types::SegmentType::LOAD).collect();
-    let segment0 = load_segments.get(0).unwrap();;
+    let segment0 = load_segments.get(0).unwrap();
     assert!(!segment0.flags.contains(types::SegmentFlags::WRITABLE),
         "first load segment must NOT be writable");
 }

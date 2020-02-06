@@ -36,7 +36,7 @@ pub enum State {
         hash:    String,
         name:    String,
         elf:     Elf,
-        read:    RefCell<Box<ReadSeekSend>>,
+        read:    RefCell<Box<dyn ReadSeekSend>>,
         bloom:   BloomFilter,
         symbols: Vec<symbol::Symbol>,
     },
@@ -230,7 +230,7 @@ impl State {
         }
     }
 
-    fn make_object(name: String, io: RefCell<Box<ReadSeekSend>>) -> Result<State, Error> {
+    fn make_object(name: String, io: RefCell<Box<dyn ReadSeekSend>>) -> Result<State, Error> {
 
         let mut elf = Elf::from_reader(&mut *io.borrow_mut())?;
 

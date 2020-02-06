@@ -624,7 +624,7 @@ impl Collected {
 
         let sh_index_symtab = self.elf.sections.len();
         let first_global_symtab = self.symtab.iter().enumerate()
-            .find(|&(_,s)|s.bind == types::SymbolBind::GLOBAL).map(|(i,_)|i).unwrap_or(0);;
+            .find(|&(_,s)|s.bind == types::SymbolBind::GLOBAL).map(|(i,_)|i).unwrap_or(0);
         self.elf.sections.push(section::Section::new(b".symtab".to_vec(), types::SectionType::SYMTAB,
         types::SectionFlags::empty(),
         section::SectionContent::Symbols(self.symtab),

@@ -679,7 +679,7 @@ impl Elf {
 
     //TODO this code isnt tested at all
     //TODO the warnings need to be emited when calling store_all instead
-    pub fn remove_section(&mut self, at: usize) -> Result<(Section), Error> {
+    pub fn remove_section(&mut self, at: usize) -> Result<Section, Error> {
         let r = self.sections.remove(at);
 
         for sec in &mut self.sections {

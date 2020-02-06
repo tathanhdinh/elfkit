@@ -413,7 +413,7 @@ fn main() {
 
     //sc_symtab.sort_unstable_by(|a,b| a.bind.cmp(&b.bind));
     let first_global_symtab = sc_symtab.iter().enumerate()
-        .find(|&(_,s)|s.bind == types::SymbolBind::GLOBAL).map(|(i,_)|i).unwrap_or(0);;
+        .find(|&(_,s)|s.bind == types::SymbolBind::GLOBAL).map(|(i,_)|i).unwrap_or(0);
     out_elf.sections.push(Section::new(String::from(".symtab"), types::SectionType::SYMTAB,
     types::SectionFlags::empty(),
     SectionContent::Symbols(sc_symtab),
